@@ -776,12 +776,6 @@
         function showLetter(member) {
             document.getElementById('letter-photo').src = member.photo;
             document.getElementById('letter-title').textContent = `Surat Untuk ${member.name}`;
-            const titleElement = document.getElementById("letter-title");
-  if (member.name === "Rafif") {
-    titleElement.innerText = `Surat Dari ${member.name} 💖`;
-  } else {
-    titleElement.innerText = `Surat Untuk ${member.name} 💌`;
-  }
             document.getElementById('letter-text').textContent = member.letter;
             showPage('letter-page');
         }
@@ -789,3 +783,4 @@
 </body>
 
 </html>
+
