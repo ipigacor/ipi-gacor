@@ -774,23 +774,17 @@
 
         // Fungsi untuk menampilkan surat untuk anggota tertentu
         function showLetter(member) {
-            document.getElementById('letter-photo').src = member.photo;
-            document.getElementById('letter-title').textContent = `Surat Untuk ${member.name}`;
-            document.getElementById('letter-text').textContent = member.letter;
-            showPage('letter-page');
-        }
-        // ✉️ fungsi buat nampilin isi surat
-function showLetter(member) {
-  // foto
-  document.getElementById("letter-photo").src = member.photo;
-  
-  // judul (kalau Rafif = Surat Dari)
-  const titleElement = document.getElementById("letter-title");
-  if (member.name === "Rafif") {
-    titleElement.innerText = `Surat Dari ${member.name} 💖`;
-  } else {
-    titleElement.innerText = `Surat Untuk ${member.name} 💌`;
-  }
+    document.getElementById("letter-photo").src = member.photo;
+
+    const titleElement = document.getElementById("letter-title");
+    if (member.name === "Rafif") {
+        titleElement.innerText = `Surat Dari ${member.name} 💖`;
+    } else {
+        titleElement.innerText = `Surat Untuk ${member.name} 💌`;
+    }
+
+    document.getElementById("letter-text").innerHTML = member.letter.replace(/\n/g, "<br>");
+}
 
   // isi surat
   document.getElementById("letter-text").innerHTML = member.letter.replace(/\n/g, "<br>");
@@ -802,5 +796,6 @@ function showLetter(member) {
 </body>
 
 </html>
+
 
 
