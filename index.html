@@ -802,10 +802,41 @@
   // munculin halamannya
   document.getElementById("letter-page").style.display = "block";
 }
+        <script>
+    // Fungsi buat nampilin surat
+    function showLetter(member) {
+        document.getElementById("letter-photo").src = member.photo;
+
+        const titleElement = document.getElementById("letter-title");
+        if (member.name === "Rafif") {
+            titleElement.innerText = `Surat Dari ${member.name} 💖`;
+        } else {
+            titleElement.innerText = `Surat Untuk ${member.name} 💌`;
+        }
+
+        document.getElementById("letter-text").innerHTML = member.letter.replace(/\n/g, "<br>");
+        
+        // Tampilkan halaman surat
+        document.getElementById("letter-page").classList.add("active");
+        document.getElementById("members-page").classList.remove("active");
+    }
+
+    // Misalnya kamu udah punya array `members` di atas
+    // Sekarang tambahin event buat tiap kartu anggota
+    document.querySelectorAll(".member-card").forEach(card => {
+        card.addEventListener("click", () => {
+            const id = parseInt(card.dataset.id);
+            const member = members.find(m => m.id === id);
+            if (member) showLetter(member);
+        });
+    });
+</script>
+
     </script>
 </body>
 
 </html>
+
 
 
 
