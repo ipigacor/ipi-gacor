@@ -773,70 +773,19 @@
         }
 
         // Fungsi untuk menampilkan surat untuk anggota tertentu
-       function showLetter(member) {
-  // atur foto
-  document.getElementById("letter-photo").src = member.photo;
-  
-  // atur judul sesuai nama
-  const titleElement = document.getElementById("letter-title");
+        function showLetter(member) {
+            document.getElementById('letter-photo').src = member.photo;
+            document.getElementById('letter-title').textContent = `Surat Untuk ${member.name}`;
+            const titleElement = document.getElementById("letter-title");
   if (member.name === "Rafif") {
     titleElement.innerText = `Surat Dari ${member.name} 💖`;
   } else {
     titleElement.innerText = `Surat Untuk ${member.name} 💌`;
   }
-  
-  // atur isi surat
-  document.getElementById("letter-text").innerHTML = member.letter.replace(/\n/g, "<br>");
-  
-  // tampilkan halaman surat
-  document.getElementById("letter-page").style.display = "block";
-}
-
-
-    document.getElementById("letter-text").innerHTML = member.letter.replace(/\n/g, "<br>");
-}
-
-  // isi surat
-  document.getElementById("letter-text").innerHTML = member.letter.replace(/\n/g, "<br>");
-
-  // munculin halamannya
-  document.getElementById("letter-page").style.display = "block";
-}
-
-    // Fungsi buat nampilin surat
-    function showLetter(member) {
-        document.getElementById("letter-photo").src = member.photo;
-
-        const titleElement = document.getElementById("letter-title");
-        if (member.name === "Rafif") {
-            titleElement.innerText = `Surat Dari ${member.name} 💖`;
-        } else {
-            titleElement.innerText = `Surat Untuk ${member.name} 💌`;
+            document.getElementById('letter-text').textContent = member.letter;
+            showPage('letter-page');
         }
-
-        document.getElementById("letter-text").innerHTML = member.letter.replace(/\n/g, "<br>");
-        
-        // Tampilkan halaman surat
-        document.getElementById("letter-page").classList.add("active");
-        document.getElementById("members-page").classList.remove("active");
-    }
-
-    // Misalnya kamu udah punya array `members` di atas
-    // Sekarang tambahin event buat tiap kartu anggota
-    document.querySelectorAll(".member-card").forEach(card => {
-        card.addEventListener("click", () => {
-            const id = parseInt(card.dataset.id);
-            const member = members.find(m => m.id === id);
-            if (member) showLetter(member);
-        });
-    });
-
     </script>
 </body>
 
 </html>
-
-
-
-
-
