@@ -779,49 +779,26 @@
             document.getElementById('letter-text').textContent = member.letter;
             showPage('letter-page');
         }
-        // Inisialisasi halaman
-document.addEventListener('DOMContentLoaded', function() {
-    // Setup logo untuk navigasi - TANPA DELAY
-    const mainLogo = document.getElementById('main-logo');
-    mainLogo.addEventListener('click', function() {
-        createHearts();
-        showPage('members-page');
-    });
+        // ✉️ fungsi buat nampilin isi surat
+function showLetter(member) {
+  // foto
+  document.getElementById("letter-photo").src = member.photo;
+  
+  // judul (kalau Rafif = Surat Dari)
+  const titleElement = document.getElementById("letter-title");
+  if (member.name === "Rafif") {
+    titleElement.innerText = `Surat Dari ${member.name} 💖`;
+  } else {
+    titleElement.innerText = `Surat Untuk ${member.name} 💌`;
+  }
 
-    // Setup tombol navigasi
-    document.getElementById('to-gallery-btn').addEventListener('click', function() {
-        showPage('gallery-page');
-        initGallery();
-    });
+  // isi surat
+  document.getElementById("letter-text").innerHTML = member.letter.replace(/\n/g, "<br>");
 
-    document.getElementById('back-to-members-btn').addEventListener('click', function() {
-        showPage('members-page');
-        clearGallery();
-    });
-
-    document.getElementById('back-to-home-btn').addEventListener('click', function() {
-        showPage('home-page');
-        clearGallery();
-    });
-
-    document.getElementById('back-from-gallery-btn').addEventListener('click', function() {
-        showPage('members-page');
-        clearGallery();
-    });
-
-    // Setup klik pada kartu anggota
-    document.querySelectorAll('.member-card').forEach(card => {
-        card.addEventListener('click', function() {
-            const memberId = parseInt(this.getAttribute('data-id'));
-            const member = members.find(m => m.id === memberId);
-            if (member) {
-                showLetter(member);
-            }
-        });
-    });
-});
+  // munculin halamannya
+  document.getElementById("letter-page").style.display = "block";
+}
     </script>
 </body>
 
 </html>
-
