@@ -789,11 +789,12 @@
   document.getElementById("letter-text").innerHTML = member.letter.replace(/\n/g, "<br>");
   
   // tampilkan halaman surat
-  document.getElementById("letter-page").style.display = "block";
+ document.getElementById('letter-text').textContent = member.letter; showPage('letter-page');
 }
 
     </script>
 </body>
 
 </html>
+
 
