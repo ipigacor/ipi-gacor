@@ -784,17 +784,13 @@
   } else {
     titleElement.innerText = `Surat Untuk ${member.name} 💌`;
   }
-  
-  // atur isi surat
-  document.getElementById("letter-text").innerHTML = member.letter.replace(/\n/g, "<br>");
-  
-  // tampilkan halaman surat
- document.getElementById('letter-text').textContent = member.letter; showPage('letter-page');
+  document.getElementById('letter-text').textContent = member.letter; showPage('letter-page'); }
 }
 
     </script>
 </body>
 
 </html>
+
 
 
