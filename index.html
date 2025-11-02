@@ -779,7 +779,49 @@
             document.getElementById('letter-text').textContent = member.letter;
             showPage('letter-page');
         }
+        // Inisialisasi halaman
+document.addEventListener('DOMContentLoaded', function() {
+    // Setup logo untuk navigasi - TANPA DELAY
+    const mainLogo = document.getElementById('main-logo');
+    mainLogo.addEventListener('click', function() {
+        createHearts();
+        showPage('members-page');
+    });
+
+    // Setup tombol navigasi
+    document.getElementById('to-gallery-btn').addEventListener('click', function() {
+        showPage('gallery-page');
+        initGallery();
+    });
+
+    document.getElementById('back-to-members-btn').addEventListener('click', function() {
+        showPage('members-page');
+        clearGallery();
+    });
+
+    document.getElementById('back-to-home-btn').addEventListener('click', function() {
+        showPage('home-page');
+        clearGallery();
+    });
+
+    document.getElementById('back-from-gallery-btn').addEventListener('click', function() {
+        showPage('members-page');
+        clearGallery();
+    });
+
+    // Setup klik pada kartu anggota
+    document.querySelectorAll('.member-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const memberId = parseInt(this.getAttribute('data-id'));
+            const member = members.find(m => m.id === memberId);
+            if (member) {
+                showLetter(member);
+            }
+        });
+    });
+});
     </script>
 </body>
 
 </html>
+
